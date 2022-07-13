@@ -1,0 +1,43 @@
+CREATE TABLE developers(
+id bigint NOT NULL AUTO_INCREMENT,
+first_name varchar(100) NOT NULL,
+second_name varchar(100),
+age INT,
+sex ENUM("male", "female", "unknown") NOT NULL,
+salary INT,
+primary key (id)
+);
+
+CREATE TABLE skills(
+id_skills bigint NOT NULL AUTO_INCREMENT,
+id_developer bigint NOT NULL ,
+technology varchar(30) NOT NULL,
+levelOfPosition varchar(30) NOT NULL,
+primary key (id_skills),
+FOREIGN KEY (id_developer) REFERENCES developers(id)
+);
+
+CREATE TABLE projects(
+id_project bigint NOT NULL AUTO_INCREMENT,
+name_of_project varchar(50) NOT NULL,
+description varchar(1000),
+start_date date,
+primary key (id_project)
+);
+
+
+
+CREATE TABLE company(
+id_company bigint NOT NULL AUTO_INCREMENT,
+name_of_company varchar(50) NOT NULL,
+address varchar(100),
+primary key (id_company)
+);
+
+CREATE TABLE customers(
+id_customer bigint NOT NULL AUTO_INCREMENT,
+name_of_customer varchar(50) NOT NULL,
+address varchar(100),
+primary key (id_customer)
+);
+
