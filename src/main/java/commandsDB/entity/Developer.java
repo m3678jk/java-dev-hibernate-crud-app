@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Setter
@@ -42,13 +43,20 @@ public class Developer {
 //    @JoinColumn(name = "id_developer")
 //    private Skills skills;
 
-    //@Getter
+    @Getter
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "developers")
+    private Set<Project> projects = new HashSet<>();
 
-//    @ManyToMany
-//    @JoinTable(name = "project_developer",
-//            joinColumns = @JoinColumn(name = "id_developer"),
-//            inverseJoinColumns = @JoinColumn(name = "id_project"))
-//    private Set<Project> projectsSet = new HashSet<>();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Developer developer = (Developer) o;
+        return id == developer.id && age == developer.age && Objects.equals(firstName, developer.firstName) && Objects.equals(secondName, developer.secondName);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, secondName, age);
+    }
 }

@@ -43,10 +43,10 @@ public class HibernateUtil {
 
        // System.out.println("commandsCompanies.inset(\"new name\", \"address\") = " + commandsCompanies.inset("new name", "address"));
         System.out.println("commandsCompanies.getList() = " + commandsCompanies.getList());
-        commandsCompanies.update(4L, "new modified", "new  modify address");
+        commandsCompanies.update(1L, "new modified", "new  modifyfff address");
         System.out.println("commandsCompanies.getList() = " + commandsCompanies.getList());
 
-        CommandsProject project = new CommandsProject();
+//        CommandsProject project = new CommandsProject();
     }
 
 }

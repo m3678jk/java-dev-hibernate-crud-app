@@ -74,46 +74,49 @@ public class CommandsProject {
     }
 
 
-//    public void addDeveloperToProject(long projectId, long developerId) {
-//        Session session = util.getSessionFactory().openSession();
-//        Transaction transaction = session.beginTransaction();
-//        Project project = getById(projectId);
-//        CommandsDevelopers commandsDevelopers = new CommandsDevelopers();
-//        Developer developer = commandsDevelopers.getById(developerId);
-//        if (project != null && developer != null) {
-//            project.addDeveloper(developer);
-//            session.merge(project);
-//        } else {
-//            System.out.println("ID incorrect");
-//        }
-//        transaction.commit();
-//        session.close();
-//    }
+    public void addDeveloperToProject(long projectId, long developerId) {
+        Session session = util.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Project project = getById(projectId);
+        CommandsDevelopers commandsDevelopers = new CommandsDevelopers();
+        Developer developer = commandsDevelopers.getById(developerId);
+        if (project != null && developer != null) {
+        project.addDeveloper(developer);
+        session.merge(project);
 
-//    public void deleteDeveloperFromProject(long projectId, long developerId){
-//        Session session = util.getSessionFactory().openSession();
-//        Transaction transaction = session.beginTransaction();
-//        Project project = getById(projectId);
-//        CommandsDevelopers commandsDevelopers = new CommandsDevelopers();
-//        Developer developer = commandsDevelopers.getById(developerId);
-//        if (project != null && developer != null) {
-////            project.getDeveloperSet().remove(developer);
-//           // developer.getProjectsSet().remove(project);
-//            session.merge(project);
-//        } else {
-//            System.out.println("ID incorrect");
-//        }
-//        transaction.commit();
-//        session.close();
-//    }
+        } else {
+            System.out.println("ID incorrect");
+        }
+        transaction.commit();
+        session.close();
+    }
+
+    public void deleteDeveloperFromProject(long projectId, long developerId){
+        Session session = util.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Project project = getById(projectId);
+        CommandsDevelopers commandsDevelopers = new CommandsDevelopers();
+        Developer developer = commandsDevelopers.getById(developerId);
+        if (project != null && developer != null) {
+            project.removeDeveloper(developer);
+            session.merge(project);
+        } else {
+            System.out.println("ID incorrect");
+        }
+        transaction.commit();
+        session.close();
+    }
 
     public static void main(String[] args) {
         CommandsProject commands = new CommandsProject();
-         System.out.println("commandsDevelopers.get(1L) = " + commands.getById(1L));
+         //System.out.println("commandsDevelopers.get(1L) = " + commands.getById(1L));
         // System.out.println("commandsDevelopers.inset(\"Jhon\", \"Lee\", 33, Developer.Sex.male, 4000) = " + commandsDevelopers.inset("Jhon", "Lee", 33, Developer.Sex.male, 4000));
         // System.out.println("commandsDevelopers.update(7, \"Joanna\",\"Lee\" , 39, Developer.Sex.female, 7000) = " + commandsDevelopers.update(7, "Joanna", "Lee", 39, Developer.Sex.female, 7000));
         // System.out.println("commandsDevelopers.getList() = " + commandsDevelopers.getList());
-      //  commands.addDeveloperToProject(2, 2);
+     // commands.addDeveloperToProject(4, 3);
+//        commands.addDeveloperToProject(4, 1);
+        commands.deleteDeveloperFromProject(4, 3);
+
 //        commands.deleteDeveloperFromProject(4, 1);
         //commands.deleteDeveloperFromProject(1, 1);
 

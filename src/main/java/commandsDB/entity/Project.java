@@ -1,13 +1,11 @@
 package commandsDB.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "projects")
@@ -25,25 +23,21 @@ public class Project {
     @Column(name = "start_date")
     private LocalDate date;
 
-//    @Setter
-//    @Getter
-//    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    @JoinTable(name= "project_developer",
-//            joinColumns = @JoinColumn(name = "id_project"),
-//            inverseJoinColumns = @JoinColumn(name = "id_developer")
-//    )
-//    private Set<Developer> developerSet = new HashSet<>();
+    @Setter
+    @Getter
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Developer> developers = new HashSet<>();
 
+    public void addDeveloper(Developer developer) {
+        developers.add(developer);
+        developer.getProjects().add(this);
+    }
 
-//    public void addDeveloper(Developer developer) {
-//        developerSet.add(developer);
-//    }
-//
-//    public void removeDeveloper(Developer developer){
-//      //  developerSet.forEach(it -> it.getProjects().remove(this));
-//       this.developerSet.remove(developer);
-////        developer.getProjects().remove(this);
-//    }
+    public void removeDeveloper(Developer developer) {
+        developers.remove(developer);
+        developer.getProjects().remove(this);
+    }
+
 
     @Override
     public String toString() {
@@ -53,5 +47,18 @@ public class Project {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return id == project.id && Objects.equals(nameOfProject, project.nameOfProject) && Objects.equals(description, project.description) && Objects.equals(date, project.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nameOfProject, description, date);
     }
 }
