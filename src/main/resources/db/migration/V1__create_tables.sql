@@ -8,14 +8,6 @@ salary INT,
 primary key (id)
 );
 
-CREATE TABLE skills(
-id_skills bigint NOT NULL AUTO_INCREMENT,
-id_developer bigint NOT NULL ,
-technology varchar(30) NOT NULL,
-levelOfPosition varchar(30) NOT NULL,
-primary key (id_skills),
-FOREIGN KEY (id_developer) REFERENCES developers(id)
-);
 
 CREATE TABLE projects(
 id_project bigint NOT NULL AUTO_INCREMENT,
@@ -34,7 +26,7 @@ address varchar(100),
 primary key (id_company)
 );
 
-CREATE TABLE customers(
+CREATE TABLE customer(
 id_customer bigint NOT NULL AUTO_INCREMENT,
 name_of_customer varchar(50) NOT NULL,
 address varchar(100),

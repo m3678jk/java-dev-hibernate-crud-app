@@ -1,11 +1,7 @@
 package hibernate;
 
-import commandsDB.commands.CommandsCompanies;
-import commandsDB.commands.CommandsProject;
-import commandsDB.entity.Company;
-import commandsDB.entity.Developer;
-import commandsDB.entity.Project;
-import commandsDB.entity.Skills;
+import serviceDAO.DAO.CompaniesDAO;
+import serviceDAO.entity.*;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -26,6 +22,7 @@ public class HibernateUtil {
                 .addAnnotatedClass(Company.class)
                 .addAnnotatedClass(Skills.class)
                 .addAnnotatedClass(Project.class)
+                .addAnnotatedClass(Customer.class)
                 .buildSessionFactory();
     }
 
@@ -38,15 +35,18 @@ public class HibernateUtil {
     }
 
     public static void main(String[] args) {
-        CommandsCompanies commandsCompanies = new CommandsCompanies();
-//        System.out.println("commandsCompanies.getById(1l) = " + commandsCompanies.getById(1l));
+        CompaniesDAO companiesDAO = new CompaniesDAO();
+//        System.out.println("companiesDAO.getById(1l) = " + companiesDAO.getById(1l));
 
-       // System.out.println("commandsCompanies.inset(\"new name\", \"address\") = " + commandsCompanies.inset("new name", "address"));
-        System.out.println("commandsCompanies.getList() = " + commandsCompanies.getList());
-        commandsCompanies.update(1L, "new modified", "new  modifyfff address");
-        System.out.println("commandsCompanies.getList() = " + commandsCompanies.getList());
+       // System.out.println("companiesDAO.inset(\"new name\", \"address\") = " + companiesDAO.inset("new name", "address"));
+       // System.out.println("companiesDAO.getList() = " + companiesDAO.getList());
+        Company company =  new Company();
+        company.setAddress("changed");
+        company.setNameOfCompany("chnhed");
+        companiesDAO.update(5L, company);
+        System.out.println("companiesDAO.getList() = " + companiesDAO.getList());
 
-//        CommandsProject project = new CommandsProject();
+//        ProjectDAO project = new ProjectDAO();
     }
 
 }

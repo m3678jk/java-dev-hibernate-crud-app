@@ -8,20 +8,6 @@ insert into developers (first_name, second_name, age, sex,salary) values
 ("Mateusz", "Lesinski", 48, "male",5200)
 ;
 
-insert into skills(id_developer, technology, levelOfPosition) values
-(1, "Java", "Junior"),
-(3, "C_PLUS_PLUS", "Senior"),
-(2, "C_SHARP", "Middle"),
-(4, "JS", "Middle"),
-(5, "C_PLUS_PLUS", "Middle"),
-(6, "Java", "Senior"),
-(1, "JS", "Junior"),
-(3, "Java", "Senior"),
-(2, "C_PLUS_PLUS", "Middle"),
-(3, "JS", "Senior"),
-(4, "Java", "Middle"),
-(6, "C_PLUS_PLUS", "Senior")
-;
 
 insert into projects (name_of_project, description, start_date) values
 ("warehouse", "organizing stock in warehouse", '2021-07-03'),
@@ -37,7 +23,7 @@ insert into company (name_of_company, address) values
 ("Opera", "Wroclaw")
 ;
 
-insert into customers(name_of_customer, address) values
+insert into customer(name_of_customer, address) values
 ("Kovolis", "Zleby"),
 ("ZF", "Lagenhagen"),
 ("Clean Logistoc", "Stockach"),
