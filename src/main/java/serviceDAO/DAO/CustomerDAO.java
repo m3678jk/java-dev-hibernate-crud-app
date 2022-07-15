@@ -64,12 +64,4 @@ public class CustomerDAO {
         return existing;
     }
 
-    public static void main(String[] args) {
-        CustomerDAO customerDAO = new CustomerDAO();
-//        System.out.println("customerDAO.inset(\"new name\", \"test\") = " + customerDAO.inset("new name", "test"));
-//        System.out.println("customerDAO.update(5, \"edited name\", \"test\") = " + customerDAO.update(5, "edited name", "test"));
-        System.out.println("customerDAO.getById(4) = " + customerDAO.getById(4));
-        System.out.println("customerDAO.getList() = " + customerDAO.getList());
-//        customerDAO.delete(5l);
-    }
 }

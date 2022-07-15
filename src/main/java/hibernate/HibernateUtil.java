@@ -13,7 +13,7 @@ public class HibernateUtil {
     private SessionFactory sessionFactory;
 
     static {
-        INSTANCE = new HibernateUtil(); // there is another way that singleton
+        INSTANCE = new HibernateUtil();
     }
 
     private HibernateUtil() {
@@ -32,21 +32,6 @@ public class HibernateUtil {
 
     public void close() {
         sessionFactory.close();
-    }
-
-    public static void main(String[] args) {
-        CompaniesDAO companiesDAO = new CompaniesDAO();
-//        System.out.println("companiesDAO.getById(1l) = " + companiesDAO.getById(1l));
-
-       // System.out.println("companiesDAO.inset(\"new name\", \"address\") = " + companiesDAO.inset("new name", "address"));
-       // System.out.println("companiesDAO.getList() = " + companiesDAO.getList());
-        Company company =  new Company();
-        company.setAddress("changed");
-        company.setNameOfCompany("chnhed");
-        companiesDAO.update(5L, company);
-        System.out.println("companiesDAO.getList() = " + companiesDAO.getList());
-
-//        ProjectDAO project = new ProjectDAO();
     }
 
 }

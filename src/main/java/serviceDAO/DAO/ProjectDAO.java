@@ -71,25 +71,4 @@ public class ProjectDAO implements DAO{
         session.close();
     }
 
-
-
-    public static void main(String[] args) {
-        ProjectDAO commands = new ProjectDAO();
-
-     // commands.addDeveloperToProject(4, 3);
-//        commands.addDeveloperToProject(4, 1);
-      //  commands.deleteDeveloperFromProject(4, 3);
-
-//        commands.deleteDeveloperFromProject(4, 1);
-        //commands.deleteDeveloperFromProject(1, 1);
-
-
-        // Project project = new Project();
-        // System.out.println("project.getDeveloperSet() = " + project.getDeveloperSet());
-//commands.inset("project 1", " descr 1", LocalDate.now());
-     //   commands.update(5,"project 1", " descr 2", LocalDate.now());
-//        commands.inset("name", "test", LocalDate.now());
-//
-
-    }
 }

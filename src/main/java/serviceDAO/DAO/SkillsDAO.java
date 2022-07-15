@@ -19,7 +19,7 @@ public class SkillsDAO implements DAO{
         session.close();
         return skills;
     }
-    //TODO it was working then stopped. do not know why
+
     public List<Skills> getList() {
         Session session = util.getSessionFactory().openSession();
         List<Skills> skills = session.createQuery("from Skills as s inner join fetch s.developer", Skills.class).list();
@@ -46,9 +46,7 @@ public class SkillsDAO implements DAO{
         DeveloperDAO developerDAO = new DeveloperDAO();
         Developer developer = developerDAO.getById(developerId);
         List<Skills> collect = developer.getSkills().stream().filter(it -> it.equals(skills)).collect(Collectors.toList());
-        if (!collect.isEmpty()){
-            System.out.println("that skills are already exist");
-        } else if (developer != null) {
+        if (developer != null) {
             developer.addSkills(skills);
             session.merge(developer);
         } else {
@@ -77,34 +75,6 @@ public class SkillsDAO implements DAO{
         }
         transaction.commit();
         session.close();
-    }
-
-
-    public static void main(String[] args) {
-        SkillsDAO skillsDAO = new SkillsDAO();
-
-        Skills skills = new Skills();
-        skills.setTechnology(Skills.Technology.Java);
-        skills.setLevelOfPosition("Middle");
-
-        Skills skills2 = new Skills();
-        skills2.setTechnology(Skills.Technology.Java);
-        skills2.setLevelOfPosition("Junior");
-
-        Skills skills3 = new Skills();
-        skills3.setTechnology(Skills.Technology.C_PLUS_PLUS);
-        skills3.setLevelOfPosition("Junior");
-
-        skillsDAO.insert(6, skills);
-//        skillsDAO.update(3, skills2);
-//        skillsDAO.update(5, skills3);
-//        skillsDAO.update(7, skills);
-//        skillsDAO.update(8, skills3);
-//        skillsDAO.update(10, skills3);
-
-//        System.out.println("skillsDAO.getById(1) = " + skillsDAO.getById(1));
-
-//        System.out.println("skillsDAO.getList() = " + skillsDAO.getList());
     }
 
 }

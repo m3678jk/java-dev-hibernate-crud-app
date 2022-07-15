@@ -10,7 +10,6 @@ import java.util.List;
 public class DeveloperDAO implements DAO{
    private HibernateUtil util = HibernateUtil.getInstance();
 
-
     public Developer getById(long id) {
         Session session = util.getSessionFactory().openSession();
         Developer developer = session.get(Developer.class, id);
@@ -71,14 +70,6 @@ public class DeveloperDAO implements DAO{
         session.close();
     }
 
-    public static void main(String[] args) {
-        DeveloperDAO developerDAO =new DeveloperDAO();
-        //System.out.println("developerDAO.get(1L) = " + developerDAO.get(1L));
-       // System.out.println("developerDAO.inset(\"Jhon\", \"Lee\", 33, Developer.Sex.male, 4000) = " + developerDAO.inset("Jhon", "Lee", 33, Developer.Sex.male, 4000));
-       // System.out.println("developerDAO.update(7, \"Joanna\",\"Lee\" , 39, Developer.Sex.female, 7000) = " + developerDAO.update(7, "Joanna", "Lee", 39, Developer.Sex.female, 7000));
-        System.out.println("developerDAO.getList() = " + developerDAO.getList());
-
-    }
 }
 
 

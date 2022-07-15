@@ -17,7 +17,6 @@ public class CompaniesDAO implements DAO {
         return company;
     }
 
-
     public List<Company> getList() {
         Session session = util.getSessionFactory().openSession();
         List<Company> companies = session.createQuery("from Company", Company.class).list(); // important to have a Capital letter

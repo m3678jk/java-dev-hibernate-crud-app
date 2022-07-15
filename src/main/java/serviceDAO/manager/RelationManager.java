@@ -1,9 +1,6 @@
-package serviceDAO;
+package serviceDAO.manager;
 
-import serviceDAO.DAO.CompaniesDAO;
-import serviceDAO.DAO.CustomerDAO;
-import serviceDAO.DAO.DeveloperDAO;
-import serviceDAO.DAO.ProjectDAO;
+import serviceDAO.DAO.*;
 import serviceDAO.entity.Company;
 import serviceDAO.entity.Customer;
 import serviceDAO.entity.Developer;
@@ -13,20 +10,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class RelationManager {
-
     private HibernateUtil util = HibernateUtil.getInstance();
 
-    private final ProjectDAO projectDAO;
-    private final DeveloperDAO developerDAO;
-    private final CustomerDAO customerDAO;
-    private final CompaniesDAO companiesDAO;
-
+    private ProjectDAO projectDAO;
+    private DeveloperDAO developerDAO;
+    private CustomerDAO customerDAO;
+    private CompaniesDAO companiesDAO;
+    private SkillsDAO skillsDAO;
 
     public RelationManager() {
         projectDAO = new ProjectDAO();
         developerDAO = new DeveloperDAO();
         customerDAO = new CustomerDAO();
         companiesDAO = new CompaniesDAO();
+        skillsDAO = new SkillsDAO();
     }
 
     public void addDeveloperToProject(long projectId, long developerId) {
@@ -122,16 +119,6 @@ public class RelationManager {
         }
         transaction.commit();
         session.close();
-    }
-
-    public static void main(String[] args) {
-        RelationManager relationManager = new RelationManager();
-       // relationManager.addCompanyToProject(1, 2);
-        relationManager.addDeveloperToProject(4, 1);
-        relationManager.addDeveloperToProject(4, 3);
-        relationManager.addDeveloperToProject(4, 6);
-
-
     }
 
 }
