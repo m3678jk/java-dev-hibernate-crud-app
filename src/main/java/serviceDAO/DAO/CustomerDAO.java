@@ -38,12 +38,9 @@ public class CustomerDAO {
         session.close();
     }
 
-    public Customer inset(String name, String address) {
+    public Customer inset(Customer customer) {
         Session session = util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setAddress(address);
         session.persist(customer);
         transaction.commit();
         session.close();
@@ -52,9 +49,11 @@ public class CustomerDAO {
         return customer;
     }
 
-    public Customer update(long id, String name, String address) {
+    public Customer update(long id, Customer customer) {
         Session session = util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
+        String name = customer.getName();
+        String address = customer.getAddress();
         Customer existing = session.get(Customer.class, id);
         existing.setName(name);
         existing.setAddress(address);

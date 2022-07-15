@@ -59,11 +59,5 @@ public class CompaniesDAO implements DAO {
 
     }
 
-    public static void main(String[] args) {
-        CompaniesDAO companiesDAO = new CompaniesDAO();
-        Company company = new Company();
-        company.setNameOfCompany("name");
-        company.setAddress("address test ");
-        companiesDAO.insert(company);
-    }
+
 }

@@ -17,10 +17,12 @@ public class Customer {
     private long customerId;
 
     @Setter
+    @Getter
     @Column(name = "name_of_customer")
     private String name;
 
     @Setter
+    @Getter
     @Column(name = "address")
     private String address;
 
