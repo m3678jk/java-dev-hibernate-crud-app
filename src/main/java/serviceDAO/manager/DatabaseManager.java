@@ -2,13 +2,9 @@ package serviceDAO.manager;
 
 import lombok.Getter;
 import serviceDAO.DAO.*;
-import storage.DatabaseConnector;
-import storage.DatabaseInitService;
-
 
 public class DatabaseManager {
 
-    private final DatabaseConnector databaseConnector;
     @Getter
     private  RelationManager relationManager;
     @Getter
@@ -25,8 +21,6 @@ public class DatabaseManager {
     private SkillsDAO skillsDAO;
 
     public DatabaseManager() {
-        databaseConnector = DatabaseConnector.getDatabaseConnector();
-        new DatabaseInitService().initDB(databaseConnector);
         relationManager = new RelationManager();
         operationOnDB = new OperationOnDB();
         projectDAO = new ProjectDAO();

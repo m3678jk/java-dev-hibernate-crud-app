@@ -108,25 +108,4 @@ public class OperationOnDB {
 
     }
 
-//    public List<Object> getListOfProject() {
-//        Session session = util.getSessionFactory().openSession();
-//        Transaction transaction = session.beginTransaction();
-////        select projects.start_date as st_d, projects.name_of_project as name_pr, projects.id_project as id_pr,\n" +
-////            " count(*) as total_dev\n" +
-////            "\tfrom projects \n" +
-////            "\tjoin project_developer on projects.id_project = project_developer.id_project\n" +
-////            "\tgroup by id_pr\n";
-//        Query<Object[]> query = session.createQuery("select p,  count(d) as tot from Project as p inner join fetch p.developers as d group by p.id",
-//                Object[].class);
-//        List<Object[]> list1 = query.list();
-//        System.out.println("list1 = " + list1);
-//        String s = list1.stream().flatMap(Arrays::stream).collect(Collectors.toList()).toString();
-//        System.out.println("s = " + s);
-//        transaction.commit();
-//        session.close();
-//        List<Object> list = new ArrayList<>();
-//        return list;
-//
-//    }
-
 }
